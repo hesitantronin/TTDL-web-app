@@ -1,0 +1,33 @@
+.body {
+  background-color: #007bff; /* Blue background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Make the container vertically centered */
+}
+
+.container {
+  width: 10px; /* Adjust as needed */
+  height: 10px; /* Adjust as needed */
+  background-color: #fff; /* White background */
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Center the content vertically and horizontally */
+}
+
+.text {
+  color: #333; /* Black text */
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.input-box {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
