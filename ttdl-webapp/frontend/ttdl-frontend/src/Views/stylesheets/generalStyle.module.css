@@ -1,33 +1,36 @@
-.body {
-  background-color: #007bff; /* Blue background */
+.container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Make the container vertically centered */
+  height: 100vh;
+  background-color: rgba(184, 210, 235, 1);
 }
 
-.container {
-  width: 10px; /* Adjust as needed */
-  height: 10px; /* Adjust as needed */
-  background-color: #fff; /* White background */
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center; /* Center the content vertically and horizontally */
+.box {
+  background-color: 'white';
+  width: '800px';
+  padding: '50px';
+  margin: '20px';
+  box-sizing: 'border-box';
+  position: 'relative';
+  border-radius: '10px';
+  box-Shadow: '0 2px 5px rgba(0,0,0,0.2)';
+
 }
 
-.text {
-  color: #333; /* Black text */
-  font-size: 16px;
-  line-height: 1.5;
-}
-
-.input-box {
+.input-text {
   width: 100%;
   padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: rgba(76, 145, 249, 1);
+  color: white;
+  border: none;
+  border-radius: '5px';
+  box-shadow: '0 2px 5px rgba(0,0,0,0.2)';
 }
