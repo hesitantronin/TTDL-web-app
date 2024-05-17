@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import generalStyle from './stylesheets/generalStyle.module.css';
+import { Link } from 'react-router-dom';  
+import Navbar from './navbar';
 
 function UserDataOverview(){
     const userRecords = [
@@ -11,6 +13,8 @@ function UserDataOverview(){
     ];
     
     return (
+        <div>
+            <Navbar />
         <div style={{
             display: 'flex',
             justifyContent: 'center',
@@ -47,6 +51,7 @@ function UserDataOverview(){
                     </tbody>
                 </table>
             </div>
+        </div>
         </div>
     );
 }

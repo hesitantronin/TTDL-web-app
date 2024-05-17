@@ -34,3 +34,26 @@
   border-radius: '5px';
   box-shadow: '0 2px 5px rgba(0,0,0,0.2)';
 }
+
+.navbar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  background-color:  rgba(76, 145, 249, 1);
+  padding: 10px 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+}
+
+.navbar-center {
+  flex-grow: 1;
+  text-align: center;
+  font-size: 1.2rem;
+  color: rgb(255, 255, 255);
+}

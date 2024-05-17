@@ -1,25 +1,21 @@
 import React from 'react';
 import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
+import UserOverview from './Views/userOverview';
+import UserDataOverview from './Views/UserDataOverview';
+//import your screens here first tee hee
 
 function App() {
+  //u can add your own route like I did, needs to start with a capital letter or it will kill u
+  // to test if it works you can do localhost:3000(yourpathname) ex. localhost:3000/userOverview
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+        <Routes>
+          <Route path="/userOverview" element={<UserOverview />} />
+          <Route path="/userDataOverview" element={<UserDataOverview />} />
+        </Routes>
+    </Router>
   );
 }
 

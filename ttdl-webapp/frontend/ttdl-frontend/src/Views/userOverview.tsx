@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
+import Navbar from './navbar';
 
-function userOverview() {
+function UserOverview() {
     const [users, setUsers] = useState<string[]>(["User 1", "User 2", "User 3", "User 4", "User 5"]);
 
     const addUser = () => {
@@ -9,6 +10,8 @@ function userOverview() {
     };
 
     return (
+        <div>
+             <Navbar />
         <div style={{
             display: 'flex',
             justifyContent: 'center',
@@ -54,7 +57,8 @@ function userOverview() {
                 </ul>
             </div>
         </div>
+        </div>
     );
 }
 
-export default userOverview;
+export default UserOverview;
