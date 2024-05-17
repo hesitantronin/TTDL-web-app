@@ -5,6 +5,8 @@ import './App.css';
 import UserOverview from './Views/userOverview';
 import UserDataOverview from './Views/UserDataOverview';
 import HomePage from './Views/HomePage';
+import Login from './Views/Login';
+import ForgotPassword from './Views/ForgotPassword';
 //import your screens here first tee hee
 
 function App() {
@@ -16,6 +18,8 @@ function App() {
           <Route path="/home" element={<HomePage />} />
           <Route path="/userOverview" element={<UserOverview />} />
           <Route path="/userDataOverview" element={<UserDataOverview />} />
+          <Route path="/Login" element={<Login />} />
+          <Route path="/ForgotPassword" element={<ForgotPassword />} />
         </Routes>
     </Router>
   );
