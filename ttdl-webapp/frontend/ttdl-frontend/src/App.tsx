@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import UserOverview from './Views/userOverview';
 import UserDataOverview from './Views/UserDataOverview';
+import HomePage from './Views/HomePage';
 //import your screens here first tee hee
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
   return (
     <Router>
         <Routes>
+          <Route path="/home" element={<HomePage />} />
           <Route path="/userOverview" element={<UserOverview />} />
           <Route path="/userDataOverview" element={<UserDataOverview />} />
         </Routes>

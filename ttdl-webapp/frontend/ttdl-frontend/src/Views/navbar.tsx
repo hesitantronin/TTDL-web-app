@@ -14,11 +14,13 @@ const Navbar = () => {
         pageName = 'User Overview';
     } else if (pathname === '/UserDataOverview') {
         pageName = 'User Data Overview';
-    } 
+    } else if (pathname == '/Home') {
+        pageName = 'Home';
+    }
 
     return (
         <nav className={styles.navbar}>
-        <Link to="/" className={styles['navbar-brand']}>
+        <Link to="/Home" className={styles['navbar-brand']}>
             Home
         </Link>
         <div className={styles['navbar-center']}>{pageName}</div>
