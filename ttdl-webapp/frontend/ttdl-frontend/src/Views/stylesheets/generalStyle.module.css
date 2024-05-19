@@ -67,7 +67,7 @@
 }
 
 .userListItem {
-  padding: 10px;
+  padding: 5px;
   border-bottom: 1px solid #ddd;
 }
 
@@ -83,4 +83,14 @@
 
 .removeButton:hover {
   background-color: darkred;
+}
+
+.userLink {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.userLink:hover {
+  text-decoration: underline;
 }

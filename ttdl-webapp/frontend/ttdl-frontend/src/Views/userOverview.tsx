@@ -1,17 +1,18 @@
 import { useEffect, useState } from 'react';
 import generalStyle from './stylesheets/generalStyle.module.css';
+import { Link } from 'react-router-dom';  
 import Navbar from './navbar';
 
 function UserOverview() {
-    const [users, setUsers] = useState<string[]>(["User 1", "User 2", "User 3", "User 4", "User 5"]);
+    const [users, setUsers] = useState<string[]>(["Gebruiker 1", "Gebruiker 2", "Gebruiker 3", "Gebruiker 4", "Gebruiker 5"]);
 
     const addUser = () => {
-        const newUser = `User ${users.length + 1}`;
+        const newUser = `Gebruiker ${users.length + 1}`;
         setUsers([...users, newUser]);
     };
 
     const removeUser = (index: number) => {
-        const isConfirmed = window.confirm('Are you sure you want to remove this user?');
+        const isConfirmed = window.confirm('Weet uw zeker dat u deze gebruiker wilt verwijderen?');
         if (isConfirmed) {
             setUsers(users.filter((_, i) => i !== index));
         }
@@ -26,18 +27,20 @@ function UserOverview() {
                         onClick={addUser}
                         className={generalStyle.button}
                     >
-                        Add user
+                        voeg gebruiker toe
                     </button>
-                    <h2 className={generalStyle.heading}>BOXX</h2>
+                    <h2 className={generalStyle.heading}></h2>
                     <ul className={generalStyle.userList}>
                         {users.map((user, index) => (
                             <li key={index} className={generalStyle.userListItem}>
-                                {user}
+                                <Link to="/userDataOverview" className={generalStyle.userLink}>
+                                    {user}
+                                </Link>
                                 <button 
                                     onClick={() => removeUser(index)}
                                     className={generalStyle.removeButton}
                                 >
-                                    Remove
+                                    Verwijder
                                 </button>
                             </li>
                         ))}
