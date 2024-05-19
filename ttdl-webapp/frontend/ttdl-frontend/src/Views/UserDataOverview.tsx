@@ -15,45 +15,32 @@ function UserDataOverview(){
     return (
         <div>
             <Navbar />
-        <div style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            height: '100vh',
-            backgroundColor: 'rgba(184,210,235,255)'
-        }}>
-            <div style={{
-                backgroundColor: 'white',
-                width: '800px',
-                padding: '50px',
-                margin: '20px',
-                boxSizing: 'border-box',
-                position: 'relative',
-                borderRadius: '10px'
-            }}>
-                <h2>gebruiker 1 data</h2>
-                <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '20px' }}>
-                    <thead>
-                        <tr>
-                            <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left' }}>Datum</th>
-                            <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left' }}>zit in stoel</th>
-                            <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left' }}>tijdstip</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {userRecords.map((record, index) => (
-                            <tr key={index}>
-                                <td style={{ border: '1px solid #ddd', padding: '8px' }}>{record.date}</td>
-                                <td style={{ border: '1px solid #ddd', padding: '8px' }}>{record.sitsInChair}</td>
-                                <td style={{ border: '1px solid #ddd', padding: '8px' }}>{record.timestamp}</td>
+            <div className={generalStyle.container}>
+                <div className={generalStyle.box}>
+                    <h2>gebruiker 1 data</h2>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '20px' }}>
+                        <thead>
+                            <tr>
+                                <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left' }}>Datum</th>
+                                <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left' }}>zit in stoel</th>
+                                <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left' }}>tijdstip</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            {userRecords.map((record, index) => (
+                                <tr key={index}>
+                                    <td style={{ border: '1px solid #ddd', padding: '8px' }}>{record.date}</td>
+                                    <td style={{ border: '1px solid #ddd', padding: '8px' }}>{record.sitsInChair}</td>
+                                    <td style={{ border: '1px solid #ddd', padding: '8px' }}>{record.timestamp}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-        </div>
-    );
+    ); 
+    
 }
 
 

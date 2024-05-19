@@ -7,15 +7,14 @@
 }
 
 .box {
-  background-color: 'white';
-  width: '800px';
-  padding: '50px';
-  margin: '20px';
-  box-sizing: 'border-box';
-  position: 'relative';
-  border-radius: '10px';
-  box-Shadow: '0 2px 5px rgba(0,0,0,0.2)';
-
+  background-color: white;
+  width: 800px;
+  padding: 50px;
+  margin: 20px;
+  box-sizing: border-box;
+  position: relative;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .input-text {
@@ -25,14 +24,14 @@
 }
 
 .button {
-  width: 100%;
+  width: 50%;
   padding: 10px;
   margin-top: 10px;
   background-color: rgba(76, 145, 249, 1);
   color: white;
   border: none;
-  border-radius: '5px';
-  box-shadow: '0 2px 5px rgba(0,0,0,0.2)';
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 .navbar {
@@ -56,4 +55,32 @@
   text-align: center;
   font-size: 1.2rem;
   color: rgb(255, 255, 255);
+}
+
+.heading {
+  padding-top: 50px;
+}
+
+.userList {
+  list-style: none;
+  padding: 0;
+}
+
+.userListItem {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.removeButton {
+  margin-left: 600px;
+  padding: 5px 10px;
+  background-color:  rgba(76, 145, 249, 1);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.removeButton:hover {
+  background-color: darkred;
 }
