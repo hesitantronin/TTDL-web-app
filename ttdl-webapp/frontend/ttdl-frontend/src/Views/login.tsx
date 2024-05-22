@@ -1,32 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './navbar';
 import { Link, useNavigate } from 'react-router-dom';
+import { useLoginController } from '../communication/LoginController';
 
 function Login() {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
-    const [name, setName] = useState('');
-    const [submitted, setSubmitted] = useState(false);
-    const navigate = useNavigate();
+    const{ error, name, submitted, handleSubmit } = useLoginController();
+    // const navigate = useNavigate();
 
-    useEffect(() => {
-        if (submitted) {
-            console.log(name);
-            navigate('/Home');
-        }
-    }, [submitted, name, navigate]);
-
-    const handleSubmit = (e: { preventDefault: () => void; }) => {
-        e.preventDefault();
-        if (email === 'arie@vantienhoven.nl' && password === 'teckelteun') {
-            setName("Arie van Tienhoven");
-            setSubmitted(true);
-        } else {
-            setError('Email of wachtwoord is onjuist');
-            setSubmitted(false);
-        }
-    };
+    // useEffect(() => {
+    //     if (submitted) {
+    //         navigate('/Home', { state: {name} });
+    //     }
+    // }, [submitted, name, navigate]);
 
     return (
         <div>
@@ -64,8 +49,8 @@ function Login() {
                             type='email'
                             placeholder='Email'
                             name='Email'
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            // value={email}
+                            // onChange={(e) => setEmail(e.target.value)}
                             style={{
                                 marginBottom: '20px',
                                 padding: '10px',
@@ -77,8 +62,8 @@ function Login() {
                             type='password'
                             placeholder='Wachtwoord'
                             name='Wachtwoord'
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
+                            // value={password}
+                            // onChange={(e) => setPassword(e.target.value)}
                             style={{
                                 marginBottom: '20px',
                                 padding: '10px',
