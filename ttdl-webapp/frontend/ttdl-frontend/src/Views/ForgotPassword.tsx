@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-// import { Hello } from '../communication/LoginController';
 import Navbar from './navbar';
 
 function forgotPassword()
