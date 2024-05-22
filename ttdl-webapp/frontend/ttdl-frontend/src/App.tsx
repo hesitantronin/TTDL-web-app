@@ -5,7 +5,7 @@ import './App.css';
 import UserOverview from './Views/userOverview';
 import UserDataOverview from './Views/UserDataOverview';
 import HomePage from './Views/HomePage';
-import Login from './Views/login';
+import Login from './Views/Login';
 import ForgotPassword from './Views/ForgotPassword';
 //import your screens here first tee hee
 
