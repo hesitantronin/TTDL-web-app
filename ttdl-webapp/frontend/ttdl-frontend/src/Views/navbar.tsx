@@ -20,6 +20,8 @@ const Navbar = () => {
         pageName = 'Inloggen';
     } else if (pathname === '/ForgotPassword' || pathname === '/forgotPassword') {
         pageName = 'Wachtwoord Vergeten';
+    } else if (pathname === '/SetupPage' || pathname === '/setupPage') {
+        pageName = 'Rolstoel Instellen';
     }
 
     return (
