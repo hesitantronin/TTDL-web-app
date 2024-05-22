@@ -8,80 +8,33 @@ function Home(){
     return (
         <div>
              <Navbar />
-        <div style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            height: '100vh',
-            backgroundColor: 'rgba(184,210,235,255)'
-        }}>
-            <div style={{
-                backgroundColor: 'white',
-                width: '1800px',
-                padding: '350px',
-                margin: '20px',
-                boxSizing: 'border-box',
-                position: 'relative',
-                borderRadius: '10px',
-                boxShadow: '0 2px 5px rgba(0,0,0,0.2)',
-            }}>
-                <h2>Welkom, Arie</h2>
-                <Link to='/UserOverview'>
-                    <button
-                        style={{
-                            position: 'absolute',
-                            textAlign: "center",
-                            top: '250px',
-                            left: '800px',
-                            width: '300px',
-                            padding: '15px',
-                            backgroundColor: 'rgba(76,145,249,255)',
-                            color: 'white',
-                            border: 'none',
-                            borderRadius: '5px',
-                            boxShadow: '0 2px 5px rgba(0,0,0,0.2)',
-                        }}>
+             <div className={generalStyle.container}>
+                <div className={generalStyle.box}>
+                    <h2>Welkom, Arie</h2>
+                    
+                    <Link to='/UserOverview'>
+                        <button
+                            className={generalStyle.verticalButton}
+                        >
                         Gebruikersinformatie
-                    </button>
-                </Link>
-                <Link to='/SetupPage'>
-                    <button
-                        style={{
-                            position: 'absolute',
-                            textAlign: "center",
-                            top: '350px',
-                            left: '800px',
-                            width: '300px',
-                            padding: '15px',
-                            backgroundColor: 'rgba(76,145,249,255)',
-                            color: 'white',
-                            border: 'none',
-                            borderRadius: '5px',
-                            boxShadow: '0 2px 5px rgba(0,0,0,0.2)',
-                        }}>
-                        Rolstoel instellen
-                    </button>
-                </Link>
-                <Link to='/Login'>
-                    <button
-                        style={{
-                            position: 'absolute',
-                            textAlign: "center",
-                            top: '450px',
-                            left: '800px',
-                            width: '300px',
-                            padding: '15px',
-                            backgroundColor: 'rgba(76,145,249,255)',
-                            color: 'white',
-                            border: 'none',
-                            borderRadius: '5px',
-                            boxShadow: '0 2px 5px rgba(0,0,0,0.2)',
-                        }}>
+                        </button>
+                    </Link>
+                    <Link to='/SetupPage'>
+                        <button
+                            className={generalStyle.verticalButton}
+                        >
+                        Rolstoel Instellen
+                        </button>
+                    </Link>
+                    <Link to='/Login'>
+                        <button
+                            className={generalStyle.verticalButton}
+                        >
                         Uitloggen
-                    </button>
-                </Link>
+                        </button>
+                    </Link>
+                </div>
             </div>
-        </div>
         </div>
     );
 }
