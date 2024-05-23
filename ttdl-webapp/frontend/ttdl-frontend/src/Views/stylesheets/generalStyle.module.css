@@ -108,3 +108,13 @@
 .userLink:hover {
   text-decoration: underline;
 }
+
+.inputField {
+  width: 100%; /* Make input fields take full width of their container */
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a slight shadow */
+  margin-bottom: 10px; /* Adjust spacing between input fields */
+}

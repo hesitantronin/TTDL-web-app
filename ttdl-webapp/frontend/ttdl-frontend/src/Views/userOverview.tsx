@@ -1,21 +1,32 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import generalStyle from './stylesheets/generalStyle.module.css';
 import { Link } from 'react-router-dom';  
 import Navbar from './navbar';
+import { useUserOverviewController } from '../communication/userOverviewController';
 
 function UserOverview() {
-    const [users, setUsers] = useState<string[]>(["Gebruiker 1", "Gebruiker 2", "Gebruiker 3", "Gebruiker 4", "Gebruiker 5"]);
+    // Replace the useState hook with your custom controller
+    const {
+        users,
+        name,
+        setName,
+        id,
+        setId,
+        lastName,
+        setLastName,
+        addUser,
+        deleteUser,
+        handleCancel,
+        handleAddUser
+    } = useUserOverviewController();
 
-    const addUser = () => {
-        const newUser = `Gebruiker ${users.length + 1}`;
-        setUsers([...users, newUser]);
-    };
+    const [showAddUserForm, setShowAddUserForm] = useState(false);
+    const [showUserList, setShowUserList] = useState(true); // State to control visibility of user list
 
-    const removeUser = (index: number) => {
-        const isConfirmed = window.confirm('Weet uw zeker dat u deze gebruiker wilt verwijderen?');
-        if (isConfirmed) {
-            setUsers(users.filter((_, i) => i !== index));
-        }
+    const handleConfirm = () => {
+        addUser();
+        setShowAddUserForm(false); // Hide the add user form after confirming
+        setShowUserList(true); // Show user list after confirming
     };
 
     return (
@@ -23,28 +34,88 @@ function UserOverview() {
             <Navbar />
             <div className={generalStyle.container}>
                 <div className={generalStyle.box}>
-                    <button 
-                        onClick={addUser}
-                        className={generalStyle.button}
-                    >
-                        voeg gebruiker toe
-                    </button>
-                    <h2 className={generalStyle.heading}></h2>
-                    <ul className={generalStyle.userList}>
-                        {users.map((user, index) => (
-                            <li key={index} className={generalStyle.userListItem}>
-                                <Link to="/userDataOverview" className={generalStyle.userLink}>
-                                    {user}
-                                </Link>
+                    {/* Show the add user form when showAddUserForm is true */}
+                    {showAddUserForm && (
+                        <form onSubmit={(e) => { e.preventDefault(); handleConfirm(); }} className={generalStyle.form}>
+                            <h2 className={generalStyle.heading}>Voeg gebruiker toe</h2>
+                            <input
+                                type="text"
+                                placeholder="Name"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                                className={generalStyle.inputField}
+                            />
+                            <input
+                                type="text"
+                                placeholder="ID"
+                                value={id}
+                                onChange={(e) => setId(e.target.value)}
+                                className={generalStyle.inputField}
+                            />
+                            <input
+                                type="text"
+                                placeholder="Last Name"
+                                value={lastName}
+                                onChange={(e) => setLastName(e.target.value)}
+                                className={generalStyle.inputField}
+                            />
+                            <div>
                                 <button 
-                                    onClick={() => removeUser(index)}
-                                    className={generalStyle.removeButton}
+                                    type="submit"
+                                    className={generalStyle.button}
+                                    onClick={() => {
+                                        handleAddUser();
+                                        setShowUserList(true); // Show user list after adding user
+                                        setShowAddUserForm(false); // Hide the add user form after adding user
+                                    }}
                                 >
-                                    Verwijder
+                                    Confirm
                                 </button>
-                            </li>
-                        ))}
-                    </ul>
+                                <button 
+                                    type="button" 
+                                    onClick={() => {
+                                        handleCancel();
+                                        setShowUserList(true); // Show user list when cancelling
+                                        setShowAddUserForm(false); // Hide the add user form when cancelling
+                                    }}
+                                    className={generalStyle.button}
+                                >
+                                    Cancel
+                                </button>
+                            </div>
+                        </form>
+                    )}
+                    {/* Button to toggle the add user form */}
+                    {!showAddUserForm && (
+                        <button 
+                            onClick={() => {
+                                setShowAddUserForm(true);
+                                setShowUserList(false); // Hide user list when adding user
+                            }}
+                            className={generalStyle.button}
+                        >
+                            Voeg gebruiker toe
+                        </button>
+                    )}
+                    <h2 className={generalStyle.heading}></h2>
+                    {/* Render user list */}
+                    {showUserList && (
+                        <ul className={generalStyle.userList}>
+                            {users.map((user, index) => (
+                                <li key={index} className={generalStyle.userListItem}>
+                                    <Link to="/userDataOverview" className={generalStyle.userLink}>
+                                        {user.name} {user.lastName}
+                                    </Link>
+                                    <button 
+                                        onClick={() => deleteUser(index)}
+                                        className={generalStyle.removeButton}
+                                    >
+                                        Verwijder
+                                    </button>
+                                </li>
+                            ))}
+                        </ul>
+                    )}
                 </div>
             </div>
         </div>
