@@ -5,7 +5,6 @@ import Navbar from './navbar';
 import { useUserOverviewController } from '../communication/userOverviewController';
 
 function UserOverview() {
-    // Replace the useState hook with your custom controller
     const {
         users,
         name,
@@ -17,13 +16,26 @@ function UserOverview() {
         addUser,
         deleteUser,
         handleCancel,
-        handleAddUser
+        nameError,
+        idError,
+        lastNameError,
+        setIdError,
+        setLastNameError,
+        setNameError
     } = useUserOverviewController();
 
     const [showAddUserForm, setShowAddUserForm] = useState(false);
     const [showUserList, setShowUserList] = useState(true); // State to control visibility of user list
 
     const handleConfirm = () => {
+        if (!name || !id || !lastName) {
+            // If any input is empty, set error messages and prevent form submission
+            setNameError(name ? '' : 'Name is required');
+            setIdError(id ? '' : 'ID is required');
+            setLastNameError(lastName ? '' : 'Last Name is required');
+            return;
+        }
+
         addUser();
         setShowAddUserForm(false); // Hide the add user form after confirming
         setShowUserList(true); // Show user list after confirming
@@ -34,7 +46,6 @@ function UserOverview() {
             <Navbar />
             <div className={generalStyle.container}>
                 <div className={generalStyle.box}>
-                    {/* Show the add user form when showAddUserForm is true */}
                     {showAddUserForm && (
                         <form onSubmit={(e) => { e.preventDefault(); handleConfirm(); }} className={generalStyle.form}>
                             <h2 className={generalStyle.heading}>Voeg gebruiker toe</h2>
@@ -42,32 +53,41 @@ function UserOverview() {
                                 type="text"
                                 placeholder="Name"
                                 value={name}
-                                onChange={(e) => setName(e.target.value)}
+                                onChange={(e) => {
+                                    setName(e.target.value);
+                                    setNameError('');
+                                }}
                                 className={generalStyle.inputField}
                             />
+                            { nameError && <span style={{ color: 'red' }}>{nameError}</span> }
+
                             <input
                                 type="text"
                                 placeholder="ID"
                                 value={id}
-                                onChange={(e) => setId(e.target.value)}
+                                onChange={(e) => {
+                                    setId(e.target.value);
+                                    setIdError('');
+                                }}
                                 className={generalStyle.inputField}
                             />
+                            { idError && <span style={{ color: 'red'}}>{idError}</span> }
+
                             <input
                                 type="text"
                                 placeholder="Last Name"
                                 value={lastName}
-                                onChange={(e) => setLastName(e.target.value)}
+                                onChange={(e) => {
+                                    setLastName(e.target.value);
+                                    setLastNameError('');
+                                }}
                                 className={generalStyle.inputField}
                             />
+                            { lastNameError && <span style={{ color: 'red'}}>{lastNameError}</span> }
                             <div>
                                 <button 
                                     type="submit"
                                     className={generalStyle.button}
-                                    onClick={() => {
-                                        handleAddUser();
-                                        setShowUserList(true); // Show user list after adding user
-                                        setShowAddUserForm(false); // Hide the add user form after adding user
-                                    }}
                                 >
                                     Confirm
                                 </button>
@@ -85,7 +105,6 @@ function UserOverview() {
                             </div>
                         </form>
                     )}
-                    {/* Button to toggle the add user form */}
                     {!showAddUserForm && (
                         <button 
                             onClick={() => {
@@ -97,8 +116,6 @@ function UserOverview() {
                             Voeg gebruiker toe
                         </button>
                     )}
-                    <h2 className={generalStyle.heading}></h2>
-                    {/* Render user list */}
                     {showUserList && (
                         <ul className={generalStyle.userList}>
                             {users.map((user, index) => (

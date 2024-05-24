@@ -19,10 +19,27 @@ export function useUserOverviewController() {
     const [name, setName] = useState('');
     const [id, setId] = useState('');
     const [lastName, setLastName] = useState('');
+    const [nameError, setNameError] = useState('');
+    const [idError, setIdError] = useState('');
+    const [lastNameError, setLastNameError] = useState('');
 
     const addUser = () => {
+        // Check if all fields are filled, otherwise set error messages
+        if (!name || !id || !lastName) {
+            if (!name) setNameError('Name is required');
+            if (!id) setIdError('ID is required');
+            if (!lastName) setLastNameError('Last Name is required');
+            return; // Exit function if any field is empty
+        }
+        // If any error exists, return without adding the user
+        if (nameError || idError || lastNameError) return;
+
         const newUser = { id, name, lastName };
         setUsers([...users, newUser]);
+        // Clear error messages after successful addition
+        setNameError('');
+        setIdError('');
+        setLastNameError('');
     };
 
     const deleteUser = (index: number) => {
@@ -32,17 +49,14 @@ export function useUserOverviewController() {
         }
     };
 
-    const handleAddUser = () => {
-        addUser();
-        setName('');
-        setId('');
-        setLastName('');
-    };
 
     const handleCancel = () => {
         setName('');
         setId('');
         setLastName('');
+        setNameError('');
+        setIdError('');
+        setLastNameError('');
     };
 
     return {
@@ -55,7 +69,12 @@ export function useUserOverviewController() {
         setLastName,
         addUser,
         deleteUser,
-        handleAddUser,
         handleCancel,
+        nameError,
+        idError,
+        lastNameError,
+        setIdError,
+        setLastNameError,
+        setNameError
     };
 }
