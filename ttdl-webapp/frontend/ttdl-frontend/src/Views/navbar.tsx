@@ -23,6 +23,14 @@ const Navbar = () => {
     } else if (pathname === '/SetupPage' || pathname === '/setupPage') {
         pageName = 'Rolstoel Instellen';
     }
+    
+    if (pathname === '/Login' || pathname === '/login') {
+        return (
+            <nav className={styles.navbar}>
+                <div className={styles['navbar-center']}>{pageName}</div>
+            </nav>
+        );
+    }
 
     return (
         <nav className={styles.navbar}>
