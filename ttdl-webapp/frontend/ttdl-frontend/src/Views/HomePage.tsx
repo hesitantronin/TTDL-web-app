@@ -12,7 +12,7 @@ function Home(){
              <Navbar />
              <div className={generalStyle.container}>
                 <div className={generalStyle.box}>
-                    <h2>Welkom, {name}</h2>
+                    <h2>Welkome, {name}</h2>
                     
                     <Link to='/UserOverview'>
                         <button
