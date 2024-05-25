@@ -16,25 +16,31 @@ function setupPage(){
                 <h2>Rolstoel Instellen</h2>
                 <input type='chairID' placeholder='Stoel ID' name='ChairID' style={{
                             marginBottom: '20px',
+                            marginLeft: '100px',
+                            marginRight: '100px',
                             padding: '10px',
                             width: '80%',
                             boxSizing: 'border-box',
                 }} />
                     <input type='sensorSensitivity' placeholder='Druksensor gevoeligheid' name='SensorSensitivity' style={{
                             marginBottom: '20px',
+                            marginLeft: '100px',
+                            marginRight: '100px',
                             padding: '10px',
                             width: '80%',
                             boxSizing: 'border-box',
                     }} />
                         <input type='patientID' placeholder='Patiënt ID' name='PatientID' style={{
                             marginBottom: '20px',
+                            marginLeft: '100px',
+                            marginRight: '100px',
                             padding: '10px',
                             width: '80%',
                             boxSizing: 'border-box',
                         }} />
                             <button 
                             onClick={initChair}
-                                className={generalStyle.button}
+                                className={generalStyle.verticalButton}
                             >
                             Initialiseer
                             </button>
