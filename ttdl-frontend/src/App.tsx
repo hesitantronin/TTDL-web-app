@@ -8,6 +8,7 @@ import HomePage from './Views/HomePage';
 import Login from './Views/login';
 import ForgotPassword from './Views/ForgotPassword';
 import SetupPage from './Views/setupPage';
+import UserAddScreen from './Views/userAddScreen';
 //import your screens here first tee hee
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path="/Login" element={<Login />} />
           <Route path="/ForgotPassword" element={<ForgotPassword />} />
           <Route path="/SetupPage" element={<SetupPage />} />
+          <Route path="/UserAdd" element={<UserAddScreen />} />
         </Routes>
     </Router>
   );

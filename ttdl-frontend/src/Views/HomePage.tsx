@@ -18,7 +18,7 @@ function Home(){
                         <button
                             className={generalStyle.verticalButton}
                         >
-                        Gebruikersinformatie
+                        cliënteninformatie
                         </button>
                     </Link>
                     <Link to='/SetupPage'>
@@ -26,6 +26,13 @@ function Home(){
                             className={generalStyle.verticalButton}
                         >
                         Rolstoel Instellen
+                        </button>
+                    </Link>
+                    <Link to='/UserAdd'>
+                        <button
+                            className={generalStyle.verticalButton}
+                        >
+                        Gebruiker Toevoegen
                         </button>
                     </Link>
                     <Link to='/Login'>
