@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 import Navbar from './navbar';
+import { useForgotPasswordController } from '../communication/WachtwoordVergetenController';
 
-function forgotPassword()
+function ForgotPassword()
 {
+    const{handleSubmit, password, error} = useForgotPasswordController();
 
     return (
         <div>
@@ -28,7 +30,9 @@ function forgotPassword()
                     alignItems: 'center'
                 }}>
                     
-                    <form style={{
+                    <form 
+                        onSubmit={handleSubmit}
+                        style={{
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
@@ -48,7 +52,8 @@ function forgotPassword()
                             backgroundColor: 'rgba(76,145,249,255)',
                             color: 'white',
                             border: 'none',
-                        }} />                   
+                        }} />   
+                        {error && <p style={{ color: 'red' }}>{error}</p>}                
                     </form>
                 </div>
             </div>
@@ -57,4 +62,4 @@ function forgotPassword()
         
 }
 
-export default forgotPassword;
+export default ForgotPassword;
