@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useLoginController } from '../communication/LoginController';
 
 function Login() {
-    const{ error, name, submitted, handleSubmit } = useLoginController();
+    const{ error, submitted, handleSubmit } = useLoginController(); //name
     // const navigate = useNavigate();
 
     // useEffect(() => {
@@ -15,7 +15,6 @@ function Login() {
 
     return (
         <div>
-            <Navbar />
             <div style={{
                 display: 'flex',
                 justifyContent: 'center',
@@ -46,9 +45,9 @@ function Login() {
                         }}
                     >
                         <input
-                            type='email'
-                            placeholder='Email'
-                            name='Email'
+                            type='Username'
+                            placeholder='Username'
+                            name='Username'
                             // value={email}
                             // onChange={(e) => setEmail(e.target.value)}
                             style={{

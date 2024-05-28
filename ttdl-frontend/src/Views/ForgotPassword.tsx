@@ -8,7 +8,6 @@ function ForgotPassword()
 
     return (
         <div>
-            <Navbar />
             <div style={{
                 display: 'flex',
                 justifyContent: 'center',
