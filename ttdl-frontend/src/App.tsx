@@ -9,11 +9,8 @@ import Login from './Views/login';
 import ForgotPassword from './Views/ForgotPassword';
 import SetupPage from './Views/setupPage';
 import UserAddScreen from './Views/userAddScreen';
-//import your screens here first tee hee
 
 function App() {
-  //u can add your own route like I did, needs to start with a capital letter or it will kill u
-  // to test if it works you can do localhost:3000(yourpathname) ex. localhost:3000/userOverview
   return (
     <Router>
         <Routes>

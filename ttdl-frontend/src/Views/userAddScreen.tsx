@@ -18,53 +18,25 @@ function AddUserScreen() {
                         type='text'
                         placeholder='Voornaam'
                         name='FirstName'
-                        style={{
-                            marginBottom: '20px',
-                            marginLeft: '100px',
-                            marginRight: '100px',
-                            padding: '10px',
-                            width: '80%',
-                            boxSizing: 'border-box',
-                        }}
+                        className={generalStyle.inputField2}
                     />
                     <input
                         type='text'
                         placeholder='Achternaam'
                         name='LastName'
-                        style={{
-                            marginBottom: '20px',
-                            marginLeft: '100px',
-                            marginRight: '100px',
-                            padding: '10px',
-                            width: '80%',
-                            boxSizing: 'border-box',
-                        }}
+                        className={generalStyle.inputField2}
                     />
                     <input
                         type='email'
                         placeholder='Email'
                         name='Email'
-                        style={{
-                            marginBottom: '20px',
-                            marginLeft: '100px',
-                            marginRight: '100px',
-                            padding: '10px',
-                            width: '80%',
-                            boxSizing: 'border-box',
-                        }}
+                        className={generalStyle.inputField2}
                     />
                     <input
                         type='password'
                         placeholder='Wachtwoord'
                         name='Password'
-                        style={{
-                            marginBottom: '20px',
-                            marginLeft: '100px',
-                            marginRight: '100px',
-                            padding: '10px',
-                            width: '80%',
-                            boxSizing: 'border-box',
-                        }}
+                        className={generalStyle.inputField2}
                     />
                     <button
                         onClick={addUser}
