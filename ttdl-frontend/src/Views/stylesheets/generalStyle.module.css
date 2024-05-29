@@ -127,3 +127,10 @@
   width: 80%;
   box-sizing: border-box;
 }
+
+.message {
+  margin-top: 10px; /* Adjust the spacing as needed */
+  color: green; /* Or another color to indicate success */
+  font-size: 1em; /* Adjust font size as needed */
+  text-align: center; /* Center the message if needed */
+}
