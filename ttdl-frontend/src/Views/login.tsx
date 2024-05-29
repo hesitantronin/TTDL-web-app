@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Navbar from './navbar';
 import { Link, useNavigate } from 'react-router-dom';
 import { useLoginController } from '../communication/LoginController';
+import generalStyle from './stylesheets/generalStyle.module.css';
 
 function Login() {
     const{ error, submitted, handleSubmit } = useLoginController(); //name
@@ -12,17 +13,28 @@ function Login() {
     //         navigate('/Home', { state: {name} });
     //     }
     // }, [submitted, name, navigate]);
+    const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  const handlePlay = () => {
+    if (audioRef.current) {
+      audioRef.current.play().catch(error => {
+        console.log('Audio playback failed:', error);
+      });
+    }
+    };
 
     return (
         <div>
             <div style={{
                 display: 'flex',
+                flexDirection: 'column', // this is so that the teckelteun image appears above the box
                 justifyContent: 'center',
                 alignItems: 'center',
                 height: '100vh',
                 backgroundColor: 'rgba(184,210,235,255)'
             }}>
-                <div style={{
+                <img id="teckelteun" src="/teckelteun.png" alt="Login Image"/>
+                <div id="test" style={{
                     backgroundColor: 'white',
                     width: '800px',
                     padding: '50px',
@@ -86,7 +98,8 @@ function Login() {
                                 border: 'none',
                             }}
                         />
-                        {error && <p style={{ color: 'red' }}>{error}</p>}
+                        <audio ref={audioRef} src="/sans.mp3" />
+                        <button onClick={handlePlay}>don't click!!!</button>
                     </form>
                 </div>
             </div>
