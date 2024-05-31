@@ -3,7 +3,7 @@
     "configurations": [
       {
         "name": "Debug Windows",
-        "cwd": "${workspaceFolder}/native-app/frontend",
+        "cwd": "${workspaceFolder}/native-app/frontend/TeckelTeunsDataLab",
         "type": "reactnative",
         "request": "launch",
         "platform": "windows"

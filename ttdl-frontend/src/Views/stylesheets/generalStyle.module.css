@@ -1,0 +1,136 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: rgba(184, 210, 235, 1);
+}
+
+.box {
+  background-color: white;
+  width: 800px;
+  padding: 50px;
+  margin: 20px;
+  box-sizing: border-box;
+  position: relative;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.input-text {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.button {
+  width: 50%;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: rgba(76, 145, 249, 1);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.verticalButton {
+  width: 50%;
+  padding: 10px;
+  margin-top: 20px;
+  background-color: rgba(76, 145, 249, 1);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  display: block;
+  margin-left: 30%;
+  margin-right: 30%;
+}
+
+.navbar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  background-color:  rgba(76, 145, 249, 1);
+  padding: 15px 0px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+}
+
+.navbar-center {
+  flex-grow: 1;
+  text-align: center;
+  font-size: 1.2rem;
+  color: rgb(255, 255, 255);
+}
+
+.heading {
+  padding-top: 50px;
+}
+
+.userList {
+  list-style: none;
+  padding: 0;
+}
+
+.userListItem {
+  padding: 5px;
+  border-bottom: 1px solid #ddd;
+}
+
+.removeButton {
+  margin-left: 600px;
+  padding: 5px 10px;
+  background-color:  rgba(76, 145, 249, 1);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.removeButton:hover {
+  background-color: darkred;
+}
+
+.userLink {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.userLink:hover {
+  text-decoration: underline;
+}
+
+.inputField {
+  width: 100%; /* Make input fields take full width of their container */
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a slight shadow */
+  margin-bottom: 10px; /* Adjust spacing between input fields */
+}
+
+.inputField2 {
+  margin-Bottom: 20px;
+  margin-Left: 100px;
+  margin-Right: 100px;
+  padding: 10px;
+  width: 80%;
+  box-sizing: border-box;
+}
+
+.message {
+  margin-top: 10px; /* Adjust the spacing as needed */
+  color: green; /* Or another color to indicate success */
+  font-size: 1em; /* Adjust font size as needed */
+  text-align: center; /* Center the message if needed */
+}
