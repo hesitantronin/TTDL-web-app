@@ -34,6 +34,12 @@ function Login() {
                 backgroundColor: 'rgba(184,210,235,255)'
             }}>
                 <img id="teckelteun" src="/teckelteun.png" alt="Login Image"/>
+                <audio ref={audioRef} src="/sans.mp3" />
+                    <button onClick={handlePlay} style={{
+                        color: 'transparent',
+                        backgroundColor: 'transparent',
+                        border: 'transparent'
+                    }}>don't click!!!</button>
                 <div id="test" style={{
                     backgroundColor: 'white',
                     width: '800px',
@@ -98,8 +104,6 @@ function Login() {
                                 border: 'none',
                             }}
                         />
-                        <audio ref={audioRef} src="/sans.mp3" />
-                        <button onClick={handlePlay}>don't click!!!</button>
                     </form>
                 </div>
             </div>
