@@ -15,7 +15,7 @@ const Navbar = () => {
     } else if (pathname === '/UserDataOverview' || pathname === '/userDataOverview') {
         pageName = 'gebruiker gegevens overzicht';
     } else if (pathname === '/Home' || pathname === '/home') {
-        pageName = 'Home';
+        pageName = '';
     } else if (pathname === '/Login' || pathname === '/login') {
         pageName = 'Inloggen';
     } else if (pathname === '/ForgotPassword' || pathname === '/forgotPassword') {

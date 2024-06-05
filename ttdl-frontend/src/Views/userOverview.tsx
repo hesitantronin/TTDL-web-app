@@ -51,7 +51,7 @@ function UserOverview() {
                             <h2 className={generalStyle.heading}>Voeg cliënt toe</h2>
                             <input
                                 type="text"
-                                placeholder="Name"
+                                placeholder="First Name"
                                 value={name}
                                 onChange={(e) => {
                                     setName(e.target.value);
@@ -60,18 +60,6 @@ function UserOverview() {
                                 className={generalStyle.inputField}
                             />
                             { nameError && <span style={{ color: 'red' }}>{nameError}</span> }
-
-                            <input
-                                type="text"
-                                placeholder="ID"
-                                value={id}
-                                onChange={(e) => {
-                                    setId(e.target.value);
-                                    setIdError('');
-                                }}
-                                className={generalStyle.inputField}
-                            />
-                            { idError && <span style={{ color: 'red'}}>{idError}</span> }
 
                             <input
                                 type="text"
@@ -84,6 +72,18 @@ function UserOverview() {
                                 className={generalStyle.inputField}
                             />
                             { lastNameError && <span style={{ color: 'red'}}>{lastNameError}</span> }
+                            <input
+                                type="text"
+                                placeholder="ID"
+                                value={id}
+                                onChange={(e) => {
+                                    setId(e.target.value);
+                                    setIdError('');
+                                }}
+                                className={generalStyle.inputField}
+                            />
+                            { idError && <span style={{ color: 'red'}}>{idError}</span> }
+
                             <div>
                                 <button 
                                     type="submit"

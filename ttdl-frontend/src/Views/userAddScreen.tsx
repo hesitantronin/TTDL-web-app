@@ -33,7 +33,7 @@ function AddUserScreen() {
                     <h2>Gebruiker Toevoegen</h2>
                     <input
                         type='text'
-                        placeholder='Voornaam'
+                        placeholder='Voornaam (gebruikersnaam)'
                         name='FirstName'
                         className={generalStyle.inputField2}
                         value={firstName}
