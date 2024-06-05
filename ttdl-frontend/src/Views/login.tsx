@@ -13,15 +13,6 @@ function Login() {
     //         navigate('/Home', { state: {name} });
     //     }
     // }, [submitted, name, navigate]);
-    const audioRef = useRef<HTMLAudioElement | null>(null);
-
-  const handlePlay = () => {
-    if (audioRef.current) {
-      audioRef.current.play().catch(error => {
-        console.log('Audio playback failed:', error);
-      });
-    }
-    };
 
     return (
         <div>
@@ -34,13 +25,7 @@ function Login() {
                 backgroundColor: 'rgba(184,210,235,255)'
             }}>
                 <img id="teckelteun" src="/teckelteun.png" alt="Login Image"/>
-                <audio ref={audioRef} src="/sans.mp3" />
-                    <button onClick={handlePlay} style={{
-                        color: 'transparent',
-                        backgroundColor: 'transparent',
-                        border: 'transparent'
-                    }}>don't click!!!</button>
-                <div id="test" style={{
+                <div style={{
                     backgroundColor: 'white',
                     width: '800px',
                     padding: '50px',
@@ -104,6 +89,7 @@ function Login() {
                                 border: 'none',
                             }}
                         />
+                        {error && <p style={{ color: 'red' }}>{error}</p>}
                     </form>
                 </div>
             </div>
