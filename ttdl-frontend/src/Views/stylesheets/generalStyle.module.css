@@ -6,15 +6,18 @@
   background-color: rgba(184, 210, 235, 1);
 }
 
+/* Box to contain the form and list */
 .box {
   background-color: white;
   width: 800px;
+  height: 500px; /* Fixed height */
   padding: 50px;
   margin: 20px;
   box-sizing: border-box;
   position: relative;
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  overflow-y: auto; /* Allow vertical scroll if content overflows */
 }
 
 .input-text {

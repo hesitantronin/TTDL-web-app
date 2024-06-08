@@ -36,6 +36,10 @@ export function useUserOverviewController() {
 
         const newUser = { id, name, lastName };
         setUsers([...users, newUser]);
+        // Clear input fields after successful addition
+        setName('');
+        setId('');
+        setLastName('');
         // Clear error messages after successful addition
         setNameError('');
         setIdError('');
@@ -51,6 +55,7 @@ export function useUserOverviewController() {
 
 
     const handleCancel = () => {
+        // Clear input fields and error messages after cancelling
         setName('');
         setId('');
         setLastName('');
