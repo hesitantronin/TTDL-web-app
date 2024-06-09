@@ -2,9 +2,13 @@ import React, { useState } from 'react';
 import generalStyle from './stylesheets/generalStyle.module.css';
 import dropdownStyle from './stylesheets/dropdownStyle.module.css';
 import Navbar from './navbar';
+import { userDataOverviewController } from '../communication/userDataController';
 
 function UserDataOverview() {
+    const { exportToCSV } = userDataOverviewController();
     //when taking data from endpoint take all data every half hour and display it.
+    //for now we will use this dummy data
+    const patientName = "Patient 1";
     const userRecords = [
         { date: "2024-05-16", intervals: [{ timestamp: "8:00-8:30", sitsInChair: "ja" }, { timestamp: "9:00-9:30", sitsInChair: "Nee" }, { timestamp: "10:00-10:30", sitsInChair: "ja" }] },
         { date: "2024-05-17", intervals: [{ timestamp: "9:00-9:30", sitsInChair: "nee" }, { timestamp: "10:30-11:00", sitsInChair: "ja" }, { timestamp: "12:00-12:30", sitsInChair: "Nee" }] },
@@ -20,6 +24,16 @@ function UserDataOverview() {
         setSelectedDate(event.target.value);
     };
 
+    const handleExport = () => {
+    const selectedRecord = userRecords.find(record => record.date === selectedDate);
+    if (selectedRecord) {
+        const fileName = `${patientName}_${selectedDate}_data.csv`;
+        exportToCSV(selectedRecord, fileName);
+    } else {
+        console.error("Selected record not found.");
+    }
+    };
+
     const selectedRecord = userRecords.find(record => record.date === selectedDate);
     if (!selectedRecord) {
         return null;
@@ -32,7 +46,7 @@ function UserDataOverview() {
                 <div className={generalStyle.box}>
                     <h2>Patient 1 data</h2>
                     <div style={{ position: 'absolute', right: -60, width: '30%' }}>
-                        <button className={generalStyle.button}>Download data</button>
+                        <button className={generalStyle.button} onClick={handleExport}>Download data</button>
                     </div>
                     <select 
                         onChange={handleDateChange} 
