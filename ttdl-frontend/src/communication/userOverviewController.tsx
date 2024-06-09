@@ -9,11 +9,11 @@ interface User {
 
 export function useUserOverviewController() {
     let [users, setUsers] = useState<User[]>([
-        { id: "1", name: "cliënt", lastName: "1" },
-        { id: "2", name: "cliënt", lastName: "2" },
-        { id: "3", name: "cliënt", lastName: "3" },
-        { id: "4", name: "cliënt", lastName: "4" },
-        { id: "5", name: "cliënt", lastName: "5" },
+        { id: "1", name: "patient", lastName: "1" },
+        { id: "2", name: "patient", lastName: "2" },
+        { id: "3", name: "patient", lastName: "3" },
+        { id: "4", name: "patient", lastName: "4" },
+        { id: "5", name: "patient", lastName: "5" },
     ]);
 
     const [name, setName] = useState('');

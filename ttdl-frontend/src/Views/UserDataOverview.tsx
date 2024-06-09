@@ -30,7 +30,7 @@ function UserDataOverview() {
             <Navbar />
             <div className={generalStyle.container}>
                 <div className={generalStyle.box}>
-                    <h2>gebruiker 1 data</h2>
+                    <h2>Patient 1 data</h2>
                     <div style={{ position: 'absolute', right: -60, width: '30%' }}>
                         <button className={generalStyle.button}>Download data</button>
                     </div>

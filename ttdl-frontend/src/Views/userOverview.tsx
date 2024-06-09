@@ -48,7 +48,7 @@ function UserOverview() {
                 <div className={generalStyle.box}>
                     {showAddUserForm && (
                         <form onSubmit={(e) => { e.preventDefault(); handleConfirm(); }} className={generalStyle.form}>
-                            <h2 className={generalStyle.heading}>Voeg cliënt toe</h2>
+                            <h2 className={generalStyle.heading}>Voeg patient toe</h2>
                             <input
                                 type="text"
                                 placeholder="First Name"
@@ -113,7 +113,7 @@ function UserOverview() {
                             }}
                             className={generalStyle.button}
                         >
-                            Voeg cliënt toe
+                            Voeg patient toe
                         </button>
                     )}
                     {showUserList && (
