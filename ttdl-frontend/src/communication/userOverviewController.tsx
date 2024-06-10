@@ -47,7 +47,7 @@ export function useUserOverviewController() {
     };
 
     const deleteUser = (index: number) => {
-        const isConfirmed = window.confirm('Weet uw zeker dat u deze gebruiker wilt verwijderen?');
+        const isConfirmed = window.confirm('Weet u zeker dat u deze gebruiker wilt verwijderen?');
         if (isConfirmed) {
             setUsers(users.filter((_, i) => i !== index));
         }
