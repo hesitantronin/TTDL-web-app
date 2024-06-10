@@ -34,12 +34,11 @@ export function useSetupPageController()
     const [error, setError] = useState('');
     const [message, setMessage] = useState('');
     const [submitted, setSubmitted] = useState(false);
-
-    const chairs = [
+    const [chairs, setChairs] = useState([
         { chairId: "abc123", sensitivity: 53, patientId: "1" },
         { chairId: "xyz000", sensitivity: 80, patientId: "2" },
         { chairId: "klm999", sensitivity: 60, patientId: "3" }
-    ];
+    ]);
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -55,7 +54,7 @@ export function useSetupPageController()
             setChairId(chairId);
             setSensitivity(sensitivity);
             setPatientId(patientId);
-            
+            setChairs([...chairs, { chairId, sensitivity, patientId }]);
             setError('');
             setSubmitted(true);
         } else {
@@ -72,5 +71,5 @@ export function useSetupPageController()
         }
     }, [submitted]);
 
-    return {error, message, handleSubmit};
+    return {error, message, handleSubmit, chairs};
 }
