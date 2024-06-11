@@ -21,7 +21,7 @@ function AddUserScreen() {
             await addUser(user);
             setMessage('Gebruiker succesvol toegevoegd');
         } catch (error: any) {
-            setMessage('Failed to add user: ' + error.message);
+            setMessage('gebruiker is niet toegevoegd: ' + error.message);
         }
     };
 

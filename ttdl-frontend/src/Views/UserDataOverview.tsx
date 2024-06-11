@@ -30,7 +30,7 @@ function UserDataOverview() {
         const fileName = `${patientName}_${selectedDate}_data.csv`;
         exportToCSV(selectedRecord, fileName);
     } else {
-        console.error("Selected record not found.");
+        console.error("geselecteerde data niet gevonden.");
     }
     };
 
