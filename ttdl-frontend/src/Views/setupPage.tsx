@@ -16,7 +16,7 @@ function SetupPage() {
             <Navbar />
             <div className={generalStyle.container}>
                 <div className={generalStyle.box}>
-                    <h2>Set Up Wheelchair</h2>
+                    <h2>Rolstoel Instellen</h2>
                     <form
                         onSubmit={handleSubmit}
                         style={{
@@ -28,19 +28,21 @@ function SetupPage() {
                     >
                         <input
                             type='text'
-                            placeholder='Chair ID'
+                            placeholder='Stoel ID'
                             name='ChairID'
                             className={generalStyle.inputField2}
+                            required
                         />
                         <input
                             type='text'
-                            placeholder='Pressure Sensor Sensitivity'
+                            placeholder='Druk Sensor Gevoeligheid'
                             name='SensorSensitivity'
                             className={generalStyle.inputField2}
+                            required
                         />
                         <input
                             type='text'
-                            placeholder='Patient ID'
+                            placeholder='Patiënt ID'
                             name='PatientID'
                             className={generalStyle.inputField2}
                         />
@@ -70,15 +72,15 @@ function SetupPage() {
                             border: 'none',
                         }}
                     >
-                        {isListVisible ? 'Hide Chairs List' : 'Show Chairs List'}
+                        {isListVisible ? 'Verberg Stoel Lijst' : 'Toon Stoel Lijst'}
                     </button>
                     {isListVisible && (
                         <div style={{ marginTop: '20px' }}>
-                            <h3>Chairs List:</h3>
+                            <h3>Stoel Lijst:</h3>
                             <ul>
                                 {chairs.map(chair => (
                                     <li key={chair.chairId}>
-                                        Chair ID: {chair.chairId}, Sensitivity: {chair.sensitivity}, Patient ID: {chair.patientId}
+                                        Stoel ID: {chair.chairId}, Sensor gevoeligheid: {chair.sensitivity}, Patiënt ID: {chair.patientId}
                                     </li>
                                 ))}
                             </ul>

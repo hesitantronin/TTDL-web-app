@@ -47,27 +47,70 @@ export function useSetupPageController()
         const chairId = form.ChairID.value;
         const sensitivity = form.SensorSensitivity.value;
         const patientId = form.PatientID.value;
-
-        let chair = chairs.find(chair => chair.chairId === chairId || chair.patientId === patientId);
     
-        if (!chair) {
-            setChairId(chairId);
-            setSensitivity(sensitivity);
-            setPatientId(patientId);
-            setChairs([...chairs, { chairId, sensitivity, patientId }]);
-            setError('');
-            setSubmitted(true);
-        } else {
-            setError('chairId of patientId bestaat al');
+        const existingChairById = chairs.find(chair => chair.chairId === chairId);
+        const existingChairByPatient = chairs.find(chair => chair.patientId === patientId);
+    
+        // Check if chairId or patientId already exists
+        if (existingChairById && existingChairByPatient) {
+            setError('StoelID of PatiëntId bestaat al');
             setMessage('');
             setSubmitted(false);
+            return;
         }
-    };
+    
+        // chairId exists, update patientID if it doesn't already exist in another chair
+        else if (existingChairById) {
+            console.log("Chair exists by ID");
+            console.log({chairId})
+            if (!existingChairByPatient || existingChairByPatient.chairId === chairId) {
+                const updatedChairs = chairs.map(chair =>
+                    chair.chairId === chairId ? { ...chair, sensitivity, patientId } : chair
+                );
+                setChairs(updatedChairs);
+                setError('');
+                setSubmitted(true);
+                return;
+            } else {
+                setError('PatiëntId is al toegewezen aan een andere stoel');
+                setMessage('');
+                setSubmitted(false);
+                return;
+            }
+        }
 
+        // Chairid does not exist, only allow patientids that don't exist already
+        else if (!existingChairById){
+            console.log(`Stoel met id bestaat nog niet`);
+            console.log({chairId});
+            if(!existingChairByPatient || existingChairByPatient.chairId === chairId){
+                console.log("ChairID of ExistingChairByPatient");
+                console.log(existingChairByPatient?.chairId);
+
+                // New chair, add it to the list
+                setChairId(chairId);
+                setSensitivity(sensitivity);
+                setPatientId(patientId);
+                setChairs([...chairs, { chairId, sensitivity, patientId }]);
+                setError('');
+                setSubmitted(true);
+            } else {
+                setError('PatiëntId is al toegewezen aan een andere stoel');
+                setMessage('');
+                setSubmitted(false);
+                return;
+            }
+                
+        }
+    
+        
+    };
+    
     useEffect(() => {
         if (submitted) {
             setMessage('Stoel succesvol geïnitialiseerd!');
             setError('');
+            setSubmitted(false); // Reset submitted to handle multiple form submissions
         }
     }, [submitted]);
 
