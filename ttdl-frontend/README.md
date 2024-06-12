@@ -44,6 +44,6 @@ Om React te leren, bekijk de React documentatie.
 Er zijn onvoltooide delen van de code. Hier is een lijst met dingen die je kunt toevoegen:
 
 1.   E-mailserver voor wachtwoord vergeten en gebruiker toevoegen, voor verificaties
-2.   Een superadmin-account dat gebruikers kan bewerken
-3.   Patiëntgegevens bewerken
-4.   Een "zie stoel" knop bij de gebruikers
+2.   Een superadmin-account dat gebruikers kan toevoegen en bewerken inplaats van een voeg gebruiker knop
+3.   Patiëntgegevens kunnen bewerken
+4.   Een "zie stoel" knop bij de patientenlijst die de stoel van de patient laat zien
