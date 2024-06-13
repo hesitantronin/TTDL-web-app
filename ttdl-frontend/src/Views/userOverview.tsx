@@ -120,7 +120,7 @@ function UserOverview() {
                         <ul className={generalStyle.userList}>
                             {users.map((user, index) => (
                                 <li key={index} className={generalStyle.userListItem}>
-                                    <Link to="/userDataOverview" className={generalStyle.userLink}>
+                                    <Link to={`/userDataOverview/${user.id}/${user.name}/${user.lastName}`} className={generalStyle.userLink}>
                                         {user.name} {user.lastName}
                                     </Link>
                                     <button 

@@ -5,6 +5,7 @@ interface User {
     id: any;
     name: string;
     lastName: string;
+    CurrentChair: any;
 }
 
 export function useUserOverviewController() {
@@ -28,7 +29,8 @@ export function useUserOverviewController() {
                 const mappedData = data.map((patient: any) => ({
                     id: patient.patientId,
                     name: patient.firstName,
-                    lastName: patient.lastName
+                    lastName: patient.lastName,
+                    CurrentChair: patient.currentChairId
                 }));
                 setUsers(mappedData);
             } catch (error) {
@@ -42,14 +44,21 @@ export function useUserOverviewController() {
         // Check if all fields are filled, otherwise set error messages
         if (!name || !id || !lastName) {
             if (!name) setNameError('Name is required');
-            // if (!id) setIdError('ID is required');
+            if (!id) setIdError('ID is required');
             if (!lastName) setLastNameError('Last Name is required');
             return; // Exit function if any field is empty
         }
         // If any error exists, return without adding the user
         if (nameError || idError || lastNameError) return;
-
-        const newUser = {name, lastName };
+    
+        // Creating newUser object with the correct structure
+        const newUser = {
+                PatientId: id,
+                FirstName: name,
+                LastName: lastName,
+                CurrentChair: null
+        };
+    
         try {
             const response = await fetch('http://localhost:28080/api/patient', {
                 method: 'POST',
@@ -58,22 +67,21 @@ export function useUserOverviewController() {
                 },
                 body: JSON.stringify(newUser),
             });
-
+    
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
-
+    
             const addedUser = await response.json();
             setUsers([...users, {
-                id: addedUser.id,
-                name: addedUser.firstName,
-                lastName: addedUser.lastName,
+                id: addedUser.PatientId,
+                name: addedUser.FirstName,
+                lastName: addedUser.LastName,
+                CurrentChair: addedUser.CurrentChairId
             }]);
-            // Clear input fields after successful addition
             setName('');
             setId('');
             setLastName('');
-            // Clear error messages after successful addition
             setNameError('');
             setIdError('');
             setLastNameError('');
@@ -81,6 +89,7 @@ export function useUserOverviewController() {
             console.error('There was a problem with the fetch operation:', error);
         }
     };
+    
 
     const deleteUser = async (index: number) => {
         const isConfirmed = window.confirm('Weet u zeker dat u deze gebruiker wilt verwijderen?');

@@ -12,7 +12,7 @@ const Navbar = () => {
     let pageName = '';
     if (pathname === '/UserOverview' || pathname === '/userOverview') {
         pageName = 'patient overzicht';
-    } else if (pathname === '/UserDataOverview' || pathname === '/userDataOverview') {
+    } else if (pathname.includes('UserDataOverview') || pathname.includes('userDataOverview')) {
         pageName = 'gebruiker gegevens overzicht';
     } else if (pathname === '/Home' || pathname === '/home') {
         pageName = '';
