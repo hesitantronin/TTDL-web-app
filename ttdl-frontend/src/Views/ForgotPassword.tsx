@@ -1,13 +1,12 @@
-import { useEffect, useState } from 'react';
 import Navbar from './navbar';
 import { useForgotPasswordController } from '../communication/WachtwoordVergetenController';
 
-function ForgotPassword()
-{
-    const{handleSubmit, password, error} = useForgotPasswordController();
+function ForgotPassword() {
+    const { handleSubmit, error } = useForgotPasswordController();
 
     return (
         <div>
+            <Navbar />
             <div style={{
                 display: 'flex',
                 justifyContent: 'center',
@@ -28,16 +27,15 @@ function ForgotPassword()
                     flexDirection: 'column',
                     alignItems: 'center'
                 }}>
-                    
-                    <form 
+                    <form
                         onSubmit={handleSubmit}
                         style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                        width: '100%',
-                    }}>
-                        <input type='email' placeholder='Email' name='Email' style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            width: '100%',
+                        }}>
+                        <input type='text' placeholder='Gebruikersnaam' name='gebruikersnaam' style={{
                             marginBottom: '20px',
                             padding: '10px',
                             width: '80%',
@@ -51,14 +49,13 @@ function ForgotPassword()
                             backgroundColor: 'rgba(76,145,249,255)',
                             color: 'white',
                             border: 'none',
-                        }} />   
-                        {error && <p style={{ color: 'red' }}>{error}</p>}                
+                        }} />
+                        {error && <p style={{ color: 'red' }}>{error}</p>}
                     </form>
                 </div>
             </div>
         </div>
-    )
-        
+    );
 }
 
 export default ForgotPassword;
