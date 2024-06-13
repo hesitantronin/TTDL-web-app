@@ -1,44 +1,49 @@
 import { useEffect, useState, FormEvent } from 'react';
 
+interface Chair {
+    chairId: string;
+    currentPatientId?: string;
+    weightTreshhold: number;
+    lowBattery: boolean;
+    currentPatient?: any;
+    measurements: any[];
+}
+
 export function useSetupPageController()
 {
-    // const addWheelChair = async (chair: any) => {
-    //     try {
-    //         const response = await fetch('http://localhost:28080/api/chairs/addchair', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify({ 
-    //             chairId: chair.ChairId, 
-    //             sensitivity: chair.WeightThreshold,
-    //             patientId: chair.CurrentPatientId
-    //         }),
-    //     });
-
-    //     if (!response.ok) {
-    //         throw new Error('Network response was not OK');
-    //     }
-
-    //     const result = await response.json();
-    //     return result;
-    //     } catch (error) {
-    //         console.error('There was a problem fetching data:', error);
-    //         throw error;
-    //     }
-    // };
-
     const [chairId, setChairId] = useState('');
     const [sensitivity, setSensitivity] = useState('');
     const [patientId, setPatientId] = useState('');
     const [error, setError] = useState('');
     const [message, setMessage] = useState('');
     const [submitted, setSubmitted] = useState(false);
-    const [chairs, setChairs] = useState([
-        { chairId: "abc123", sensitivity: 53, patientId: "1" },
-        { chairId: "xyz000", sensitivity: 80, patientId: "2" },
-        { chairId: "klm999", sensitivity: 60, patientId: "3" }
-    ]);
+    const [chairs, setChairs] = useState<Chair[]>([]);
+    
+    useEffect(() => { 
+        const fetchChair = async () => {
+            try {
+                const response = await fetch('http://localhost:28080/api/Chair');
+                if(!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const result = await response.json();
+                console.log('Raw API response:', result); // Log the raw response
+                const mappedData = result.map((chair: any) => ({
+                    chairId: chair.chairId,
+                    currentPatientId: chair.currentPatientId,
+                    weightTreshhold: chair.weightTreshhold,
+                    lowBattery: chair.lowBattery,
+                    currentPatient: chair.currentPatient,
+                    measurements: chair.measurements,
+                }));
+                setChairs(mappedData);
+                console.log('Mapped Data:', mappedData);
+            } catch (error) {
+                console.error('There was a problem with the fetch operation:', error);
+            }
+        };
+        fetchChair();
+    }, []);
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -49,61 +54,117 @@ export function useSetupPageController()
         const patientId = form.PatientID.value;
     
         const existingChairById = chairs.find(chair => chair.chairId === chairId);
-        const existingChairByPatient = chairs.find(chair => chair.patientId === patientId);
+        const existingChairByPatient = chairs.find(chair => chair.currentPatientId === patientId);
     
         // Check if chairId or patientId already exists
-        if (existingChairById && existingChairByPatient) {
-            setError('StoelID of PatiëntId bestaat al');
-            setMessage('');
-            setSubmitted(false);
-            return;
-        }
+        // if (existingChairById && existingChairByPatient) {
+        //     setError('StoelID of PatiëntId bestaat al in een stoel');
+        //     console.log('Chairs:', chairs);
+        //     setMessage('');
+        //     setSubmitted(false);
+        //     return;
+        // }
     
         // chairId exists, update patientID if it doesn't already exist in another chair
-        else if (existingChairById) {
+        if (existingChairById) {
             console.log("Chair exists by ID");
-            console.log({chairId})
-            if (!existingChairByPatient || existingChairByPatient.chairId === chairId) {
+            console.log({ chairId })
+            if (!existingChairByPatient || existingChairByPatient.chairId === chairId || patientId == '') {
                 const updatedChairs = chairs.map(chair =>
-                    chair.chairId === chairId ? { ...chair, sensitivity, patientId } : chair
+                    chair.chairId === chairId ? {
+                        ...chair,
+                        currentPatientId: patientId,
+                        weightTreshhold: sensitivity,
+                        currentPatient: null,
+                        measurements: []
+                    } : chair
                 );
-                setChairs(updatedChairs);
-                setError('');
-                setSubmitted(true);
-                return;
-            } else {
-                setError('PatiëntId is al toegewezen aan een andere stoel');
-                setMessage('');
-                setSubmitted(false);
-                return;
-            }
-        }
-
-        // Chairid does not exist, only allow patientids that don't exist already
-        else if (!existingChairById){
-            console.log(`Stoel met id bestaat nog niet`);
-            console.log({chairId});
-            if(!existingChairByPatient || existingChairByPatient.chairId === chairId){
-                console.log("ChairID of ExistingChairByPatient");
-                console.log(existingChairByPatient?.chairId);
-
-                // New chair, add it to the list
-                setChairId(chairId);
-                setSensitivity(sensitivity);
-                setPatientId(patientId);
-                setChairs([...chairs, { chairId, sensitivity, patientId }]);
-                setError('');
-                setSubmitted(true);
-            } else {
-                setError('PatiëntId is al toegewezen aan een andere stoel');
-                setMessage('');
-                setSubmitted(false);
-                return;
-            }
                 
+                const encodedChairId = encodeURIComponent(chairId);
+
+                // console.log('New Chair Payload:', updatedChairs.find(chair => chair.chairId === chairId));
+                // console.log(`existing chair by id: ${existingChairById.chairId}`);
+                try {
+                    const response = await fetch(`http://localhost:28080/api/Chair/${encodedChairId}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(updatedChairs.find(chair => chair.chairId === chairId)), // Send only the updated chair
+                    });
+    
+                    if (!response.ok) {
+                        const errorText = await response.text();
+                        throw new Error(`Network response was not ok: ${errorText}`);
+                    }
+                    
+                    setChairs(updatedChairs);
+                    setError('');
+                    setSubmitted(true);
+                } catch (error) {
+                    console.error('There was a problem with the fetch operation:', error);
+                }
+            } else {
+                setError('PatiëntId is al toegewezen aan een andere stoel');
+                setMessage('');
+                setSubmitted(false);
+                return;
+            }
         }
     
+        // Chairid does not exist, only allow patientids that don't exist already
+        else if (!existingChairById) {
+            console.log(`Stoel met id bestaat nog niet`);
+            console.log({ chairId });
+            if (!existingChairByPatient || existingChairByPatient.chairId === chairId) {
+                console.log("ChairID of ExistingChairByPatient");
+    
+                const newChair = {
+                    chairId: chairId,
+                    currentPatientId: patientId,
+                    weightTreshhold: sensitivity,
+                    lowBattery: true, // Assuming the default value
+                    currentPatient: null, // Or set it to some default value if necessary
+                    measurements: []
+                };
         
+                try {
+                    const response = await fetch('http://localhost:28080/api/Chair', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(newChair),
+                    });
+    
+                    if (!response.ok) {
+                        const errorText = await response.text();
+                        throw new Error(`Network response was not ok: ${errorText}`);
+                    }
+    
+                    const addedChair = await response.json();
+                    console.log(addedChair);
+                    setChairs([...chairs, {
+                        chairId: addedChair.chairId,
+                        currentPatientId: addedChair.currentPatientId,
+                        weightTreshhold: addedChair.weightTreshhold,
+                        lowBattery: addedChair.lowBattery,
+                        currentPatient: addedChair.currentPatient,
+                        measurements: addedChair.measurements,
+                    }]);
+                    setError('');
+                    setSubmitted(true);
+                } catch (error) {
+                    console.error('There was a problem with the fetch operation:', error);
+                }
+    
+            } else {
+                setError('PatiëntId is al toegewezen aan een andere stoel');
+                setMessage('');
+                setSubmitted(false);
+                return;
+            }
+        }
     };
     
     useEffect(() => {

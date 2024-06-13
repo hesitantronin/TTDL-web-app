@@ -42,7 +42,7 @@ function SetupPage() {
                         />
                         <input
                             type='text'
-                            placeholder='Patiënt ID'
+                            placeholder='Patiënt ID (laat leeg om patiënt te verwijderen van deze stoel)'
                             name='PatientID'
                             className={generalStyle.inputField2}
                         />
@@ -80,7 +80,7 @@ function SetupPage() {
                             <ul>
                                 {chairs.map(chair => (
                                     <li key={chair.chairId}>
-                                        Stoel ID: {chair.chairId}, Sensor gevoeligheid: {chair.sensitivity}, Patiënt ID: {chair.patientId}
+                                        Stoel ID: {chair.chairId}, Sensor gevoeligheid: {chair.weightTreshhold}, Patiënt ID: {chair.currentPatientId}
                                     </li>
                                 ))}
                             </ul>

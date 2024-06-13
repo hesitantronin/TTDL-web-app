@@ -11,9 +11,9 @@ const Navbar = () => {
     //so when your page is done add the pathname here so it displays the right name in the middle of the nav bar 
     let pageName = '';
     if (pathname === '/UserOverview' || pathname === '/userOverview') {
-        pageName = 'patient overzicht';
+        pageName = 'Patiënt overzicht';
     } else if (pathname.includes('UserDataOverview') || pathname.includes('userDataOverview')) {
-        pageName = 'gebruiker gegevens overzicht';
+        pageName = 'Gebruikersgegevens overzicht';
     } else if (pathname === '/Home' || pathname === '/home') {
         pageName = '';
     } else if (pathname === '/Login' || pathname === '/login') {
