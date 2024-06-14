@@ -1,3 +1,4 @@
+import React from 'react';
 import Navbar from './navbar';
 import { useForgotPasswordController } from '../communication/WachtwoordVergetenController';
 
@@ -12,7 +13,9 @@ function ForgotPassword() {
                 justifyContent: 'center',
                 alignItems: 'center',
                 height: '100vh',
-                backgroundColor: 'rgba(184,210,235,255)'
+                backgroundColor: 'rgba(184, 210, 235, 1)',
+                position: 'relative',
+                overflow: 'hidden',
             }}>
                 <div style={{
                     backgroundColor: 'white',
@@ -20,13 +23,17 @@ function ForgotPassword() {
                     padding: '50px',
                     margin: '20px',
                     boxSizing: 'border-box',
-                    position: 'relative',
                     borderRadius: '10px',
                     boxShadow: '0 2px 5px rgba(0,0,0,0.2)',
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center'
                 }}>
+                    <div className="marquee">
+                        <p>Momenteel wordt er hard gewerkt aan deze functie!
+                                    Excuses voor het ongemak!
+                        </p>
+                    </div>
                     <form
                         onSubmit={handleSubmit}
                         style={{
@@ -46,7 +53,7 @@ function ForgotPassword() {
                             width: '80%',
                             boxSizing: 'border-box',
                             borderRadius: '5px',
-                            backgroundColor: 'rgba(76,145,249,255)',
+                            backgroundColor: 'rgba(76, 145, 249, 1)',
                             color: 'white',
                             border: 'none',
                         }} />
