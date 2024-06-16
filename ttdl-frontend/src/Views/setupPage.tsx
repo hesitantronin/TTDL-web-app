@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import generalStyle from './stylesheets/generalStyle.module.css';
 import { useSetupPageController } from '../communication/SetuppageController';
 import Navbar from './navbar';
+import { Link } from 'react-router-dom';  
 
 function SetupPage() {
-    const { error, message, handleSubmit, chairs } = useSetupPageController();
+    const { error, message, handleSubmit, chairs, deleteChair } = useSetupPageController();
     const [isListVisible, setIsListVisible] = useState(false);
 
     const toggleListVisibility = () => {
@@ -75,16 +76,21 @@ function SetupPage() {
                         {isListVisible ? 'Verberg Stoel Lijst' : 'Toon Stoel Lijst'}
                     </button>
                     {isListVisible && (
-                        <div style={{ marginTop: '20px' }}>
-                            <h3>Stoel Lijst:</h3>
-                            <ul>
-                                {chairs.map(chair => (
-                                    <li key={chair.chairId}>
-                                        Stoel ID: {chair.chairId}, Sensor gevoeligheid: {chair.weightTreshhold}, Patiënt ID: {chair.currentPatientId}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
+                        <ul className={generalStyle.chairList}>
+                            {chairs.map((chair, index) => (
+                                <li key={index} className={generalStyle.chairListItem}>
+                                    <Link to={`/chairDataOverview/${chair.chairId}/${chair.currentPatientId}`} className={generalStyle.chairLink}>
+                                        {chair.chairId}
+                                    </Link>
+                                    <button 
+                                        onClick={() => deleteChair(chair.chairId)}
+                                        className={generalStyle.removeButton}
+                                    >
+                                        Verwijder
+                                    </button>
+                                </li>
+                            ))}
+                        </ul>
                     )}
                 </div>
             </div>
