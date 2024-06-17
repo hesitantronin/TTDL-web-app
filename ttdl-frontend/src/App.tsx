@@ -21,7 +21,6 @@ function App() {
           <Route path="/ForgotPassword" element={<ForgotPassword />} />
           <Route path="/SetupPage" element={<SetupPage />} />
           <Route path="/UserAdd" element={<UserAddScreen />} />
-          <Route path="/chairDataOverview/:chairId/:currentPatientId" element={<SetupPage />} />
         </Routes>
     </Router>
   );
