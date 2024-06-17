@@ -11,9 +11,9 @@ interface Chair {
 
 export function useSetupPageController()
 {
-    const [chairId, setChairId] = useState('');
-    const [sensitivity, setSensitivity] = useState('');
-    const [patientId, setPatientId] = useState('');
+    // const [chairId, setChairId] = useState('');
+    // const [sensitivity, setSensitivity] = useState('');
+    // const [patientId, setPatientId] = useState('');
     const [error, setError] = useState('');
     const [message, setMessage] = useState('');
     const [submitted, setSubmitted] = useState(false);
@@ -90,7 +90,7 @@ export function useSetupPageController()
                         headers: {
                             'Content-Type': 'application/json',
                         },
-                        body: JSON.stringify(updatedChairs.find(chair => chair.chairId === chairId)), // Send only the updated chair
+                        body: JSON.stringify(updatedChairs.find(chair => chair.chairId === chairId)),
                     });
     
                     if (!response.ok) {
@@ -123,8 +123,8 @@ export function useSetupPageController()
                     chairId: chairId,
                     currentPatientId: patientId,
                     weightTreshhold: sensitivity,
-                    lowBattery: true, // Assuming the default value
-                    currentPatient: null, // Or set it to some default value if necessary
+                    lowBattery: true, 
+                    currentPatient: null,
                     measurements: []
                 };
         
@@ -166,6 +166,22 @@ export function useSetupPageController()
             }
         }
     };
+
+    // const deleteChair = async (chairId: string) => {
+    //     try {
+    //         const response = await fetch(`http://localhost:28080/api/Chair/${chairId}`, {
+    //             method: 'DELETE',
+    //         });
+
+    //         if (!response.ok) {
+    //             throw new Error('Network response was not ok');
+    //         }
+
+    //         setChairs(chairs.filter(chair => chair.chairId !== chairId));
+    //     } catch (error) {
+    //         console.error('There was a problem with the fetch operation:', error);
+    //     }
+    // };
     
     useEffect(() => {
         if (submitted) {
