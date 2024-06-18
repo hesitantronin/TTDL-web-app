@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import { useParams } from 'react-router-dom';
 import generalStyle from './stylesheets/generalStyle.module.css';
 import dropdownStyle from './stylesheets/dropdownStyle.module.css';
@@ -55,12 +55,12 @@ function UserDataOverview() {
     };
 
     if (!user) {
-        return <div>No data available</div>;
+        return <div>Geen data voor deze patient</div>;
     }
 
     const selectedRecord = userRecords.find(record => record.date === selectedDate);
     if (!selectedRecord) {
-        return <div>No data available for the selected date.</div>;
+        return <div>Geen data voor deze geslecteerde datum.</div>;
     }
 
     return (

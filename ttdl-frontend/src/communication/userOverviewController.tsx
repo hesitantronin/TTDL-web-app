@@ -43,9 +43,9 @@ export function useUserOverviewController() {
     const addUser = async () => {
         // Check if all fields are filled, otherwise set error messages
         if (!name || !id || !lastName) {
-            if (!name) setNameError('Name is required');
-            if (!id) setIdError('ID is required');
-            if (!lastName) setLastNameError('Last Name is required');
+            if (!name) setNameError('Naam is verplicht');
+            if (!id) setIdError('ID is verplicht');
+            if (!lastName) setLastNameError('Achternaam is verplicht');
             return; // Exit function if any field is empty
         }
         // If any error exists, return without adding the user

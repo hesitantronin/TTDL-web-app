@@ -5,7 +5,6 @@ import styles from './stylesheets/generalStyle.module.css';
 const Navbar = () => {
     const location = useLocation();
     const pathname = location.pathname;
-    // console.log(pathname);
 
     //this gets the page name and sets it to the pageName variable, so it displays the page you are currently on in the nav bar
     //so when your page is done add the pathname here so it displays the right name in the middle of the nav bar 
@@ -15,7 +14,7 @@ const Navbar = () => {
     } else if (pathname.includes('UserDataOverview') || pathname.includes('userDataOverview')) {
         pageName = 'Gebruikersgegevens overzicht';
     } else if (pathname === '/Home' || pathname === '/home') {
-        pageName = '';
+        pageName = 'Home';
     } else if (pathname === '/Login' || pathname === '/login') {
         pageName = 'Inloggen';
     } else if (pathname === '/ForgotPassword' || pathname === '/forgotPassword') {
