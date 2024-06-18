@@ -27,7 +27,6 @@ export function useSetupPageController()
                     throw new Error('Network response was not ok');
                 }
                 const result = await response.json();
-                console.log('Raw API response:', result); // Log the raw response
                 const mappedData = result.map((chair: any) => ({
                     chairId: chair.chairId,
                     currentPatientId: chair.currentPatientId,
@@ -37,7 +36,6 @@ export function useSetupPageController()
                     measurements: chair.measurements,
                 }));
                 setChairs(mappedData);
-                console.log('Mapped Data:', mappedData);
             } catch (error) {
                 console.error('There was a problem with the fetch operation:', error);
             }
@@ -67,8 +65,7 @@ export function useSetupPageController()
     
         // chairId exists, update patientID if it doesn't already exist in another chair
         if (existingChairById) {
-            // console.log("Chair exists by ID");
-            // console.log({ chairId })
+
             if (!existingChairByPatient || existingChairByPatient.chairId === chairId || patientId == '') {
                 const updatedChairs = chairs.map(chair =>
                     chair.chairId === chairId ? {
@@ -82,8 +79,6 @@ export function useSetupPageController()
                 
                 const encodedChairId = encodeURIComponent(chairId);
 
-                // console.log('New Chair Payload:', updatedChairs.find(chair => chair.chairId === chairId));
-                // console.log(`existing chair by id: ${existingChairById.chairId}`);
                 try {
                     const response = await fetch(`http://localhost:28080/api/Chair/${encodedChairId}`, {
                         method: 'PUT',
@@ -114,11 +109,7 @@ export function useSetupPageController()
     
         // Chairid does not exist, only allow patientids that don't exist already
         else if (!existingChairById) {
-            console.log(`Stoel met id bestaat nog niet`);
-            console.log({ chairId });
-            if (!existingChairByPatient || existingChairByPatient.chairId === chairId) {
-                console.log("ChairID of ExistingChairByPatient");
-    
+            if (!existingChairByPatient || existingChairByPatient.chairId === chairId) {    
                 const newChair = {
                     chairId: chairId,
                     currentPatientId: patientId,
@@ -143,7 +134,6 @@ export function useSetupPageController()
                     }
     
                     const addedChair = await response.json();
-                    console.log(addedChair);
                     setChairs([...chairs, {
                         chairId: addedChair.chairId,
                         currentPatientId: addedChair.currentPatientId,
