@@ -55,7 +55,7 @@ function UserDataOverview() {
     };
 
     if (!user) {
-        return <div>Loading...</div>;
+        return <div>No data available</div>;
     }
 
     const selectedRecord = userRecords.find(record => record.date === selectedDate);

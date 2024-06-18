@@ -67,8 +67,8 @@ export function useSetupPageController()
     
         // chairId exists, update patientID if it doesn't already exist in another chair
         if (existingChairById) {
-            console.log("Chair exists by ID");
-            console.log({ chairId })
+            // console.log("Chair exists by ID");
+            // console.log({ chairId })
             if (!existingChairByPatient || existingChairByPatient.chairId === chairId || patientId == '') {
                 const updatedChairs = chairs.map(chair =>
                     chair.chairId === chairId ? {

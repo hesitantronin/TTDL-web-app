@@ -18,7 +18,7 @@ function Home(){
                         <button
                             className={generalStyle.verticalButton}
                         >
-                        Cliënteninformatie
+                        Patiënteninformatie
                         </button>
                     </Link>
                     <Link to='/SetupPage'>
