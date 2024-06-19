@@ -32,7 +32,7 @@ function AddUserScreen() {
             setMessage('Gebruiker is niet toegevoegd: ' + error.message);
         }
     };
-    // soemthing that could be added is an email input field, this is only useful if there is a future implementation of an email server.
+    // something that could be added is an email input field, this is only useful if there is a future implementation of an email server.
     return (
         <div>
             <Navbar />
