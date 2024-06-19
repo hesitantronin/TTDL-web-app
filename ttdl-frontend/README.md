@@ -37,9 +37,11 @@ voor meer informatie over de scripts, zie de [Create React App documentatie](htt
 
 ## Toekomstige toevoegingen
 
-Er zijn onvoltooide delen van de code. Hier is een lijst met dingen die je als developer kunt toevoegen:
+implementaties die in de toekomst kunnen worden toegevoegd:
 
 1.   E-mailserver voor wachtwoord vergeten en gebruiker toevoegen, voor verificaties
 2.   Een superadmin-account dat gebruikers kan toevoegen en bewerken inplaats van een voeg gebruiker knop
 3.   Patiëntgegevens kunnen bewerken
 4.   de specefieke data van een patiënt is nog niet verbonden met de database, dit moet nog worden toegevoegd (nu is de data hardcoded)
+
+voor meer informatie over wat er nog toegevoegd kan worden aan de code, check het testing document (testing website) voor niet geimplementeerde features/oplossingen.
