@@ -9,7 +9,7 @@ interface User {
 }
 
 export function useUserOverviewController() {
-    let [users, setUsers] = useState<User[]>([]); // Initialize users state with an empty array
+    let [users, setUsers] = useState<User[]>([]); 
     const [name, setName] = useState('');
     const [id, setId] = useState('');
     const [lastName, setLastName] = useState('');
@@ -18,7 +18,7 @@ export function useUserOverviewController() {
     const [lastNameError, setLastNameError] = useState('');
 
     useEffect(() => {
-        // Fetch the patient data from the backend when the component mounts
+        // Fetch the patient data from the backend 
         const fetchUsers = async () => {
             try {
                 const response = await fetch('http://localhost:28080/api/patient');
@@ -48,7 +48,6 @@ export function useUserOverviewController() {
             if (!lastName) setLastNameError('Achternaam is verplicht');
             return; // Exit function if any field is empty
         }
-        // If any error exists, return without adding the user
         if (nameError || idError || lastNameError) return;
     
         // Creating newUser object with the correct structure

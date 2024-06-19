@@ -25,7 +25,7 @@ function UserOverview() {
     } = useUserOverviewController();
 
     const [showAddUserForm, setShowAddUserForm] = useState(false);
-    const [showUserList, setShowUserList] = useState(true); // State to control visibility of user list
+    const [showUserList, setShowUserList] = useState(true); 
 
     const handleConfirm = () => {
         if (!name || !id || !lastName) {

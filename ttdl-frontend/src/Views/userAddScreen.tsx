@@ -32,7 +32,7 @@ function AddUserScreen() {
             setMessage('Gebruiker is niet toegevoegd: ' + error.message);
         }
     };
-
+    // soemthing that could eb added is an emal input field, this is only useful if there is a future implementation of an email server.
     return (
         <div>
             <Navbar />
