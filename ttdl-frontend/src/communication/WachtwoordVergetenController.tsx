@@ -6,7 +6,7 @@ export function useForgotPasswordController() {
     const [password, setPassword] = useState('');
 
     const users = [
-        { username: "Arie", password: "vergeten!", name: "Arie van Tienhoven" }
+        { username: "Arie", password: "TeckelTeun", name: "Arie van Tienhoven" }
     ];
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
