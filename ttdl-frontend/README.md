@@ -1,46 +1,48 @@
-# Getting Started with Create React App
+## Aan de slag met Tekelteuns Datalab
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Dit project is opgestart met Create React App.
+## Beschikbare scripts
 
-## Available Scripts
+In dit project kun je de volgende commands runnen:
+## npm start
 
-In the project directory, you can run:
+Start de app in de ontwikkelmodus.
+Open http://localhost:3000 om het in de browser te bekijken.
 
-### `npm start`
+De pagina wordt herladen als je wijzigingen aanbrengt en ze dan opslaat (ctrl+S).
+Je zult ook eventuele errors in de console zien.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## npm test
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Start de testrunner in de interactieve watch-modus.
+## npm run build
 
-### `npm test`
+Bouwt de app voor productie naar de build map.
+Het bundelt React correct in productiemodus en optimaliseert de build voor de beste prestaties.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+De build is geminimaliseerd en de bestandsnamen bevatten de hashes.
+Je app is klaar om te worden ingezet!
 
-### `npm run build`
+## npm run eject
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Opmerking: dit is een eenmalige operatie. Zodra je eject uitvoert, kun je niet meer terug!
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Als je niet tevreden bent met de buildtool en configuratiekeuzes, kun je op elk moment eject uitvoeren. Deze opdracht verwijdert de enkele bouwafhankelijkheid van je project.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+In plaats daarvan kopieert het alle configuratiebestanden en de transitieve afhankelijkheden (webpack, Babel, ESLint, enz.) direct naar je project zodat je volledige controle over ze hebt. Alle opdrachten behalve eject blijven werken, maar ze zullen verwijzen naar de gekopieerde scripts zodat je ze kunt aanpassen. Vanaf dit punt ben je op jezelf aangewezen.
 
-### `npm run eject`
+Je hoeft eject nooit te gebruiken. De samengestelde set functies is geschikt voor kleine en middelgrote implementaties, en je moet je niet verplicht voelen om deze functie te gebruiken. We begrijpen echter dat deze tool niet nuttig zou zijn als je hem niet kon aanpassen wanneer je er klaar voor bent.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+voor meer informatie over de scripts, zie de [Create React App documentatie](https://facebook.github.io/create-react-app/docs/getting-started).
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Toekomstige toevoegingen
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+implementaties die in de toekomst kunnen worden toegevoegd:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+1.   E-mailserver voor wachtwoord vergeten en gebruiker toevoegen, voor verificaties
+2.   Een superadmin-account dat gebruikers kan toevoegen en bewerken inplaats van een voeg gebruiker knop
+3.   Patiëntgegevens kunnen bewerken
+4.   de specefieke data van een patiënt is nog niet verbonden met de database, dit moet nog worden toegevoegd (nu is de data hardcoded)
+5.   Security features zoals een wrapper die ervoor zogt dat je alleen bij de rest van het programma kan als je bent ingelogt
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+voor meer informatie over wat er nog toegevoegd kan worden aan de code, check het testing document (testing website) voor niet geimplementeerde features/oplossingen.

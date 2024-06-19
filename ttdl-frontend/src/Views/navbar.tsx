@@ -5,15 +5,14 @@ import styles from './stylesheets/generalStyle.module.css';
 const Navbar = () => {
     const location = useLocation();
     const pathname = location.pathname;
-    // console.log(pathname);
 
     //this gets the page name and sets it to the pageName variable, so it displays the page you are currently on in the nav bar
     //so when your page is done add the pathname here so it displays the right name in the middle of the nav bar 
     let pageName = '';
     if (pathname === '/UserOverview' || pathname === '/userOverview') {
-        pageName = 'cliënt overzicht';
-    } else if (pathname === '/UserDataOverview' || pathname === '/userDataOverview') {
-        pageName = 'gebruiker gegevens overzicht';
+        pageName = 'Patiënt overzicht';
+    } else if (pathname.includes('UserDataOverview') || pathname.includes('userDataOverview')) {
+        pageName = 'Gebruikersgegevens overzicht';
     } else if (pathname === '/Home' || pathname === '/home') {
         pageName = 'Home';
     } else if (pathname === '/Login' || pathname === '/login') {

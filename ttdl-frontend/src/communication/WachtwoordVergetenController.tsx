@@ -1,24 +1,21 @@
 import { useEffect, useState, FormEvent } from 'react';
 
-export function useForgotPasswordController()
-{
+export function useForgotPasswordController() {
     const [error, setError] = useState('');
     const [submitted, setSubmitted] = useState(false);
     const [password, setPassword] = useState('');
 
     const users = [
-        { email: "arie@vantienhoven.nl", password: "teckelteun", name: "Arie van Tienhoven" },
-        { email: "test@gebruiker.com", password: "test123", name: "Test Gebruiker" },
-        { email: "teckel@teun.nl", password: "password", name: "Teckel Teun" }
+        { username: "Arie", password: "TeckelTeun", name: "Arie van Tienhoven" }
     ];
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-    
-        const form = event.currentTarget;
-        const email = form.Email.value;
 
-        let user = users.find(user => user.email === email);
+        const form = event.currentTarget;
+        const username = form.gebruikersnaam.value;
+
+        let user = users.find(user => user.username === username);
 
         if (user)
         {
@@ -27,10 +24,10 @@ export function useForgotPasswordController()
         }
         else 
         {
-            setError('Geen account gevonden met dit mailadres');
+            setError('Geen account gevonden met deze gebruikersnaam');
             setSubmitted(false);
         }
-    }
+    };
 
     useEffect(() => {
         if (submitted) {
@@ -38,6 +35,5 @@ export function useForgotPasswordController()
         }
     }, [submitted, password]);
 
-    return {handleSubmit, password, error}
-
+    return { handleSubmit, error };
 }

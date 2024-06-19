@@ -54,7 +54,6 @@ export function useLoginController() {
     const navigate = useNavigate();
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-        console.log('handleSubmit');
         event.preventDefault();
 
         const form = event.currentTarget;
@@ -73,7 +72,6 @@ export function useLoginController() {
             if (response.ok) {
                 const responseData = await response.json();
                 if (responseData.match) {
-                    console.log('match');
                     setName(username);
                     setSubmitted(true);
                 } else {

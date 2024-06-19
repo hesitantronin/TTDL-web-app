@@ -2,6 +2,31 @@ import { Console } from 'console';
 import { useEffect, useState } from 'react';
 
 export function userAddController() {
+
+    
+    const validateFirstName = (name: any) => {
+        const namePattern = /^[A-Za-z]{2,}$/;
+        if (!namePattern.test(name)) {
+            return 'Voornaam moet minstens 2 karakters lang zijn en alleen letters bevatten';
+        }
+        return '';
+    };
+
+    const validateLastName = (name: any) => {
+        const namePattern = /^[A-Za-z]{2,}$/;
+        if (!namePattern.test(name)) {
+            return 'Achternaam moet minstens 2 karakters lang zijn en alleen letters bevatten';
+        }
+        return '';
+    };
+
+    const validatePassword = (password: any) => {
+        const passwordPattern = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+        if (!passwordPattern.test(password)) {
+            return 'Wachtwoord moet minstens 8 karakters lang zijn, één hoofdletter, één kleine letter, één cijfer en één speciaal teken bevatten';
+        }
+        return '';
+    };
     const addUser = async (user: any) => {
     try {
         const response = await fetch('http://localhost:28080/api/users/register', {
@@ -27,6 +52,6 @@ export function userAddController() {
     }
 };
 
-    return { addUser };
+    return { addUser, validateFirstName, validateLastName, validatePassword};
 }
     
